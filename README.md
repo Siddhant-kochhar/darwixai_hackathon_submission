@@ -8,6 +8,10 @@ A sophisticated web application that leverages AI to transform harsh code review
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.0+-green.svg)](https://fastapi.tiangolo.com/)
 [![Google Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini-orange.svg)](https://ai.google.dev/)
 
+## 📋 **Important Demo Note**
+
+> **🔑 Gemini API Key:** The Gemini API key is provided temporarily for demo purposes for a few days and will be revoked thereafter.
+
 ## 🌟 Features
 
 - **🎯 Empathetic Feedback**: Transforms critical comments into encouraging, constructive guidance
@@ -181,6 +185,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 📧 Email: [siddhant.kochhar1@gmail.com](mailto:siddhant.kochhar1@gmail.com)
 - 💼 LinkedIn: [linkedin.com/in/siddhant-kochhar](https://www.linkedin.com/in/siddhant-kochhar)
 - 📱 Contact: [+91 8965897560](tel:+918965897560)
+
+## 📦 Submission Details
+
+**DarwixAI Hackathon Submission - August 28, 2025**
+
+- 🌐 **GitHub Repository**: [darwixai_hackathon_submission](https://github.com/Siddhant-kochhar/darwixai_hackathon_submission)
+- 📁 **Submission Format**: Submitted as zip folder via Google Form
+- 🎯 **Mission**: Hackathon Mission 1 - The Empathetic Code Reviewer
+- ⏰ **Submission Date**: August 28, 2025
 
 ---
 
