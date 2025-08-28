@@ -1,0 +1,9 @@
+{
+  "code_snippet": "def calculate_area(radius):\n    return 3.14 * radius * radius\n\ndef get_user_input():\n    radius = input(\"Enter radius: \")\n    return radius",
+  "review_comments": [
+    "Consider using math.pi instead of hardcoded 3.14",
+    "The function get_user_input should validate input and convert to float",
+    "Add docstrings to explain what each function does",
+    "Consider error handling for invalid inputs"
+  ]
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Reports - Empathetic Code Reviewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .navigation {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #4facfe;
+            color: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .report-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            border-color: #4facfe;
+            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.2);
+        }
+
+        .report-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .report-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .report-size {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .report-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .stats-bar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4facfe;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <div class="nav-links">
+                <a href="/" class="nav-link">🏠 Home</a>
+                <a href="/reports" class="nav-link">📊 Reports</a>
+                <a href="/api/health" class="nav-link">💚 Health</a>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>📊 Generated Reports</h1>
+            <p>View and download your code review reports</p>
+        </div>
+
+        <div class="content">
+            {% if reports %}
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="stat-number">{{ reports|length }}</div>
+                        <div class="stat-label">Total Reports</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">{{ (reports|map(attribute='size')|join('')|replace(' KB', '')|float|sum)|round(1) }}</div>
+                        <div class="stat-label">Total Size (KB)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">{{ reports|length }}</div>
+                        <div class="stat-label">Available Downloads</div>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    {% for report in reports %}
+                    <div class="report-card">
+                        <div class="report-title">📄 {{ report.name }}</div>
+                        <div class="report-meta">
+                            <span class="report-size">{{ report.size }}</span>
+                            <span class="report-date">{{ report.created|int|timestamp_to_date }}</span>
+                        </div>
+                        <div class="report-actions">
+                            <a href="/download/{{ report.name }}" class="btn btn-success btn-small">💾 Download</a>
+                            <button onclick="viewReport('{{ report.name }}')" class="btn btn-small">👁️ Preview</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">📝</div>
+                    <h3>No Reports Generated Yet</h3>
+                    <p>Start by creating your first code review report!</p>
+                    <br>
+                    <a href="/" class="btn">🚀 Create First Report</a>
+                </div>
+            {% endif %}
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="/" class="btn">➕ Generate New Report</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewReport(filename) {
+            // Open download link in new tab for preview
+            window.open(`/download/${filename}`, '_blank');
+        }
+
+        // Format timestamp to readable date
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateElements = document.querySelectorAll('.report-date');
+            dateElements.forEach(element => {
+                const timestamp = parseFloat(element.textContent);
+                if (!isNaN(timestamp)) {
+                    const date = new Date(timestamp * 1000);
+                    element.textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
